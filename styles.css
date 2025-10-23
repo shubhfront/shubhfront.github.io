@@ -1,11 +1,11 @@
-/* Global Reset and Variables */
+/* Global Reset and Variables (Neon Cyan Theme) */
 :root {
-    --primary-color: #00bcd4; /* Cyan/Teal */
-    --secondary-color: #f44336; /* Red for emphasis */
-    --background-color: #1e1e1e; /* Dark Grey */
-    --text-color: #f0f0f0; /* Light text */
-    --card-bg: #2d2d2d;
-    --font-stack: 'Fira Code', 'Roboto Mono', monospace; /* Coder Fonts */
+    --primary-color: #00bcd4; /* Neon Cyan */
+    --background-color: #1a1a1a; /* Dark background */
+    --text-color: #e0e0e0; /* Light text */
+    --card-bg: #222222; /* Slightly lighter dark for cards */
+    --font-stack: 'Roboto', sans-serif; 
+    --coder-font: 'Fira Code', monospace; /* For highlights */
 }
 
 * {
@@ -30,8 +30,8 @@ body {
 
 /* Header & Navigation */
 header {
-    background-color: #1a1a1a;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: #121212;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -45,9 +45,10 @@ nav {
 }
 
 .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: 1.6rem;
+    font-weight: 700;
     color: var(--text-color);
+    font-family: var(--coder-font);
 }
 
 .logo .dot {
@@ -60,68 +61,96 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 30px;
+    margin-left: 35px;
 }
 
 nav ul li a {
     color: var(--text-color);
     text-decoration: none;
     font-size: 1rem;
+    padding: 5px 0;
     transition: color 0.3s ease;
+    border-bottom: 2px solid transparent;
 }
 
-nav ul li a:hover {
+nav ul li a:hover, nav ul li a.active {
     color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 /* Hero Section */
 .hero {
-    min-height: 80vh;
+    min-height: 85vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 80px 0;
-    gap: 40px;
+    gap: 60px;
 }
 
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 15px;
     color: var(--primary-color);
+    font-weight: 900;
+}
+.hero-content h1 .wave {
+    display: inline-block;
+    animation: wave-animation 2.5s infinite;
 }
 
-.hero-content p {
-    font-size: 1.2rem;
+.tagline {
+    font-size: 1.1rem;
     margin-bottom: 25px;
+    max-width: 550px;
 }
 
-.typing-text {
-    min-height: 30px; /* To prevent layout shift */
-    margin-bottom: 25px;
-    font-size: 1.5rem;
-    color: var(--secondary-color);
+.skills-highlight {
+    font-family: var(--coder-font);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #ccc;
 }
 
+.skill-tag {
+    color: #f44336; /* Secondary color for contrast */
+    font-weight: bold;
+}
+
+/* Hero Image & Neon Glow */
 .hero-image {
-    background: var(--card-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.glowing-circle {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    width: 250px;
-    height: 250px;
+    border: 3px solid var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--primary-color);
-    box-shadow: 0 0 20px rgba(0, 188, 212, 0.5); /* Glowing effect */
+    box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color) inset;
+    transition: all 0.5s ease;
+}
+
+.glowing-circle:hover {
+    box-shadow: 0 0 25px var(--primary-color), 0 0 40px var(--primary-color) inset;
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 12px 25px;
+    padding: 12px 30px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 4px;
     font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s;
+    transition: background-color 0.3s ease, transform 0.2s, color 0.3s;
+    font-family: var(--coder-font);
+    text-transform: uppercase;
 }
 
 .primary-btn {
@@ -138,49 +167,51 @@ nav ul li a:hover {
 
 /* Sections */
 section {
-    padding: 60px 0;
+    padding: 80px 0;
 }
 
-section h2 {
+.section-title {
     font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 40px;
-    color: var(--primary-color);
+    margin-bottom: 50px;
+    color: var(--text-color);
+    font-weight: 500;
 }
 
-hr {
-    border: none;
-    height: 1px;
-    background-color: var(--card-bg);
-    margin: 40px auto;
-    width: 80%;
+.section-title .highlight {
+    color: var(--primary-color);
+    font-weight: 900;
 }
 
 /* Skills Grid */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 30px;
+    padding-top: 20px;
 }
 
 .skill-card {
     background-color: var(--card-bg);
-    padding: 30px;
+    padding: 30px 20px;
     border-radius: 8px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
-    border-left: 5px solid var(--primary-color);
+    border: 1px solid #333;
 }
 
 .skill-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3); /* Neon Shadow */
+    border-color: var(--primary-color);
 }
 
 .skill-card i {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: var(--primary-color);
     margin-bottom: 15px;
+    /* Optional: Small glow on icons */
+    text-shadow: 0 0 5px var(--primary-color);
 }
 
 .skill-card h3 {
@@ -188,29 +219,46 @@ hr {
     color: var(--text-color);
 }
 
+.skill-card p {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+}
+
 /* Footer */
 footer {
-    background-color: #1a1a1a;
+    background-color: #121212;
     padding: 20px 0;
     text-align: center;
     font-size: 0.9rem;
-    border-top: 1px solid var(--card-bg);
+    border-top: 1px solid #333;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Keyframe for Wave Animation */
+@keyframes wave-animation {
+    0%, 100% { transform: rotate(0deg); }
+    15% { transform: rotate(14deg); }
+    30% { transform: rotate(-8deg); }
+    40% { transform: rotate(14deg); }
+    50% { transform: rotate(-4deg); }
+    60% { transform: rotate(10deg); }
+    70% { transform: rotate(0deg); }
+}
+
+/* Responsive Design (Optional, but good practice) */
+@media (max-width: 900px) {
     .hero {
         flex-direction: column;
         text-align: center;
+        gap: 40px;
+        min-height: auto;
     }
-    .hero-content h1 {
-        font-size: 2.5rem;
+    .hero-content, .hero-image {
+        max-width: 100%;
     }
     .hero-image {
-        width: 150px;
-        height: 150px;
+        order: -1; /* Image pehle dikhega */
     }
     nav ul {
-        display: none; /* Hide for simplicity on mobile */
+        display: none; /* Simple mobile nav ke liye */
     }
 }
