@@ -1,80 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shubhfront | Shubham's Terminal Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubhfront.me - Shubham | Coder & Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">Shubham<span class="neon-dot">_</span></div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <pre class="terminal">
-<span class="green">user@shubhfront:~$</span> Welcome to Shubham's terminal portfolio
-<span class="green">user@shubhfront:~$</span> Python | Web Dev | C/C++
-<span class="green">user@shubhfront:~$</span> Let's explore!
-    </pre>
-    <button id="viewProjects">View Projects</button>
-  </section>
+    <header>
+        <nav class="container">
+            <div class="logo">Shubhfront<span class="dot">.me</span></div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section id="about" class="panel">
-    <h2>About Me</h2>
-    <p>
-      Hi, I'm Shubham — a coder who loves clean, minimal, and futuristic designs. I build interactive web experiences, solve problems in Python and C/C++, and bring code to life.
-    </p>
-  </section>
+    <main>
+        <section id="home" class="hero container">
+            <div class="hero-content">
+                <h1>Hello, I'm Shubham 👋</h1>
+                <p>A passionate **Coder** and **Full-Stack Developer** specializing in building innovative and efficient solutions.</p>
+                <div class="typing-text">
+                    <span id="typed-output"></span>
+                </div>
+                <a href="#contact" class="btn primary-btn">Get In Touch</a>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-terminal fa-5x"></i> 
+            </div>
+        </section>
 
-  <section id="skills" class="panel alt">
-    <h2>Skills</h2>
-    <div class="skill-list">
-      <span class="skill">Python 🐍</span>
-      <span class="skill">HTML 🌐</span>
-      <span class="skill">CSS 🎨</span>
-      <span class="skill">JavaScript ⚡</span>
-      <span class="skill">C / C++ 💻</span>
-    </div>
-  </section>
+        <hr>
 
-  <section id="projects" class="panel">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>Portfolio Terminal</h3>
-        <p>A terminal-style portfolio built with HTML, CSS, JS and neon theme.</p>
-      </div>
-      <div class="project-card">
-        <h3>Py Automator</h3>
-        <p>Python scripts for automating daily repetitive tasks.</p>
-      </div>
-      <div class="project-card">
-        <h3>DSA Visualizer</h3>
-        <p>Interactive visualization of data structures and algorithms in C++ and JS.</p>
-      </div>
-    </div>
-  </section>
+        <section id="skills" class="skills container">
+            <h2>My Tech Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                    <p>Building back-end systems, automation, and data scripts.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Web Dev</h3>
+                    <p>HTML5, CSS3, JavaScript - crafting responsive and modern UIs.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-c"></i> 
+                    <h3>C & C++</h3>
+                    <p>Strong foundation in DSA, competitive programming, and system-level coding.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i> 
+                    <h3>Databases</h3>
+                    <p>Experience with SQL and NoSQL databases like MySQL and MongoDB.</p>
+                </div>
+            </div>
+        </section>
 
-  <section id="contact" class="panel alt">
-    <h2>Contact</h2>
-    <p>Connect with me for collaboration or projects 🚀</p>
-    <div class="social-links">
-      <a href="mailto:shubham3786.2007@gmail.com">📧 Email</a>
-      <a href="https://github.com/shubhfront" target="_blank">💻 GitHub</a>
-      <a href="https://www.linkedin.com/in/shubham-sharma-9978a4386/" target="_blank">🔗 LinkedIn</a>
-    </div>
-  </section>
+        <section id="projects" class="container">
+            <h2>Projects</h2>
+            <p>*(Add your project cards/details here)*</p>
+        </section>
+        <section id="contact" class="container">
+            <h2>Contact</h2>
+            <p>*(Add a contact form or links here)*</p>
+        </section>
 
-  <footer>
-    <p>© <span id="year"></span> Shubham | Terminal Portfolio</p>
-  </footer>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Shubhfront.me. Built with ❤️ and Code.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
