@@ -244,7 +244,7 @@ footer {
     70% { transform: rotate(0deg); }
 }
 
-/* Responsive Design (Optional, but good practice) */
+/* Responsive Design */
 @media (max-width: 900px) {
     .hero {
         flex-direction: column;
@@ -259,6 +259,6 @@ footer {
         order: -1; /* Image pehle dikhega */
     }
     nav ul {
-        display: none; /* Simple mobile nav ke liye */
+        /* Mobile menu ke liye yahan CSS add kar sakte hain, abhi hidden hai */
     }
 }
