@@ -1,34 +1,27 @@
 // Dynamic year in footer
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Scroll to Projects section on button click
+// Scroll to Projects section
 document.getElementById("viewProjects").addEventListener("click", () => {
   document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
 });
 
-// Subtle fade-in animation on scroll
-const elements = document.querySelectorAll("section, .project-card, .skill");
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { threshold: 0.1 });
+// Typing animation for terminal
+const terminal = document.querySelector(".terminal");
+const lines = [
+  "user@shubhfront:~$ Welcome to Shubham's terminal portfolio",
+  "user@shubhfront:~$ Python | Web Dev | C/C++",
+  "user@shubhfront:~$ Let's explore!"
+];
+let i = 0, j = 0;
 
-elements.forEach((el) => observer.observe(el));
+function typeLine() {
+  if(i < lines.length) {
+    terminal.textContent = lines.slice(0,i).join('\n') + '\n' + lines[i].slice(0,j);
+    j++;
+    if(j > lines[i].length) { i++; j=0; setTimeout(typeLine, 500); }
+    else { setTimeout(typeLine, 50); }
+  }
+}
 
-// CSS for animation (inject dynamically)
-const style = document.createElement("style");
-style.textContent = `
-  .visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-  section, .project-card, .skill {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-  }
-`;
-document.head.appendChild(style);
+setTimeout(typeLine, 500);
