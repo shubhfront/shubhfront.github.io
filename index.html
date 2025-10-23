@@ -13,7 +13,7 @@
         <nav class="container">
             <div class="logo">Shubhfront<span class="dot">.me</span></div>
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -24,55 +24,60 @@
     <main>
         <section id="home" class="hero container">
             <div class="hero-content">
-                <h1>Hello, I'm Shubham 👋</h1>
-                <p>A passionate **Coder** and **Full-Stack Developer** specializing in building innovative and efficient solutions.</p>
-                <div class="typing-text">
-                    <span id="typed-output"></span>
+                <h1>Hello, I'm Shubham <span class="wave">👋</span></h1>
+                <p class="tagline">A passionate Coder and Full-Stack Developer specializing in building innovative and efficient solutions.</p>
+                
+                <div class="skills-highlight">
+                    <span class="skill-tag">Python</span> $\bullet$ 
+                    <span class="skill-tag">Web Development</span> $\bullet$ 
+                    <span class="skill-tag">C/C++</span>
                 </div>
+
                 <a href="#contact" class="btn primary-btn">Get In Touch</a>
             </div>
             <div class="hero-image">
-                <i class="fas fa-terminal fa-5x"></i> 
+                <div class="glowing-circle">
+                    <i class="fas fa-terminal fa-3x"></i> 
+                </div>
             </div>
         </section>
 
-        <hr>
-
         <section id="skills" class="skills container">
-            <h2>My Tech Stack</h2>
+            <h2 class="section-title">Skills &nbsp; <span class="highlight">My Tech Stack</span></h2>
             <div class="skills-grid">
+                
                 <div class="skill-card">
                     <i class="fab fa-python"></i>
                     <h3>Python</h3>
-                    <p>Building back-end systems, automation, and data scripts.</p>
+                    <p>Backend systems, scripting, automation, and machine learning basics.</p>
                 </div>
+                
                 <div class="skill-card">
                     <i class="fas fa-code"></i>
                     <h3>Web Dev</h3>
-                    <p>HTML5, CSS3, JavaScript - crafting responsive and modern UIs.</p>
+                    <p>HTML5, CSS3, JavaScript - building responsive and modern interfaces.</p>
                 </div>
+                
                 <div class="skill-card">
-                    <i class="fas fa-c"></i> 
+                    <i class="fas fa-file-code"></i> 
                     <h3>C & C++</h3>
-                    <p>Strong foundation in DSA, competitive programming, and system-level coding.</p>
+                    <p>Strong foundation in DSA, competitive programming, and core logic.</p>
                 </div>
+                
                 <div class="skill-card">
                     <i class="fas fa-database"></i> 
                     <h3>Databases</h3>
-                    <p>Experience with SQL and NoSQL databases like MySQL and MongoDB.</p>
+                    <p>Experience with SQL (MySQL, PostgreSQL) and NoSQL (MongoDB).</p>
                 </div>
+
             </div>
         </section>
 
         <section id="projects" class="container">
-            <h2>Projects</h2>
-            <p>*(Add your project cards/details here)*</p>
+            <h2 class="section-title">Projects</h2>
+            <p style="color: #ccc;">*(Yahaan apne projects ki details daalen)*</p>
         </section>
-        <section id="contact" class="container">
-            <h2>Contact</h2>
-            <p>*(Add a contact form or links here)*</p>
-        </section>
-
+        
     </main>
 
     <footer>
