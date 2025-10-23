@@ -1,27 +1,45 @@
-// Dynamic year in footer
-document.getElementById("year").textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Typing Effect in Hero Section
+    const typedOutput = document.getElementById('typed-output');
+    const skills = ["Python", "Web Development", "C/C++", "Data Structures", "Full-Stack"];
+    let skillIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const delayBetweenSkills = 1500;
 
-// Scroll to Projects section
-document.getElementById("viewProjects").addEventListener("click", () => {
-  document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+    function type() {
+        const currentSkill = skills[skillIndex];
+
+        if (isDeleting) {
+            // Deleting text
+            typedOutput.textContent = currentSkill.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            // Typing text
+            typedOutput.textContent = currentSkill.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let speed = isDeleting ? deletingSpeed : typingSpeed;
+
+        if (!isDeleting && charIndex === currentSkill.length) {
+            // Pause at the end of the word
+            speed = delayBetweenSkills;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            // Move to the next word
+            isDeleting = false;
+            skillIndex = (skillIndex + 1) % skills.length;
+        }
+
+        setTimeout(type, speed);
+    }
+
+    // Start the typing effect
+    type();
+    
+    // 2. Set Current Year in Footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 });
-
-// Typing animation for terminal
-const terminal = document.querySelector(".terminal");
-const lines = [
-  "user@shubhfront:~$ Welcome to Shubham's terminal portfolio",
-  "user@shubhfront:~$ Python | Web Dev | C/C++",
-  "user@shubhfront:~$ Let's explore!"
-];
-let i = 0, j = 0;
-
-function typeLine() {
-  if(i < lines.length) {
-    terminal.textContent = lines.slice(0,i).join('\n') + '\n' + lines[i].slice(0,j);
-    j++;
-    if(j > lines[i].length) { i++; j=0; setTimeout(typeLine, 500); }
-    else { setTimeout(typeLine, 50); }
-  }
-}
-
-setTimeout(typeLine, 500);
