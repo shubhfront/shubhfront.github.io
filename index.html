@@ -3,89 +3,987 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shubhfront.me - Shubham | Coder & Developer</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>shubhfront | Robotics & Systems Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #06b6d4;
+            --accent-hover: #0891b2;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #334155;
+            --card-bg: rgba(30, 41, 59, 0.5);
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .brand span {
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .pen-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-title {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: var(--secondary);
+            border-radius: 50px;
+            border: 1px solid var(--border);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            background: var(--primary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            background: rgba(6, 182, 212, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .project-type {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .tech-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .skill-item::before {
+            content: '›';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .contact-info > p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            background: rgba(6, 182, 212, 0.05);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            border: 1px solid var(--border);
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .contact-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .contact-cta {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50px;
+            color: var(--success);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .availability-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .contact-cta h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-cta p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--secondary);
+        }
+
+        .footer-brand {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .social-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(6, 182, 212, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .copyright span {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <nav class="container">
-            <div class="logo">Shubhfront<span class="dot">.me</span></div>
-            <ul>
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="brand">shubh<span>front</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main>
-        <section id="home" class="hero container">
-            <div class="hero-content">
-                <h1>Hello, I'm Shubham <span class="wave">👋</span></h1>
-                <p class="tagline">A passionate Coder and Full-Stack Developer specializing in building innovative and efficient solutions.</p>
-                
-                <div class="skills-highlight">
-                    <span class="skill-tag">Python</span> $\bullet$ 
-                    <span class="skill-tag">Web Development</span> $\bullet$ 
-                    <span class="skill-tag">C/C++</span>
-                </div>
-
-                <a href="#contact" class="btn primary-btn">Get In Touch</a>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="pen-name">@shubhfront</div>
+            <h1>Shubham Sharma</h1>
+            <div class="hero-title">BTech Student & Robotics Engineer</div>
+            <div class="hero-location">
+                <span>📍</span>
+                <span>NIT Hamirpur | Systems & Quantum Lab</span>
             </div>
-            <div class="hero-image">
-                <div class="glowing-circle">
-                    <i class="fas fa-terminal fa-3x"></i> 
+            <p class="hero-description">
+                Specializing in hardware-software integration, ROS environments, and autonomous systems. 
+                Building the intersection between classical robotics and quantum computing applications.
+            </p>
+            <div class="cta-group">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="section-header">
+            <span class="section-tag">Profile</span>
+            <h2 class="section-title">About shubhfront</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    I'm <span class="highlight">Shubham Sharma</span>, operating under the handle <span class="highlight">shubhfront</span>, a BTech student at <span class="highlight">NIT Hamirpur</span> specializing in robotics and embedded systems. My work bridges the gap between hardware architectures and software algorithms.
+                </p>
+                <p>
+                    With expertise in <span class="highlight">C++, Python, and Linux environments</span>, I develop autonomous solutions using ROS frameworks. My research interests extend into quantum physics applications in computing and next-generation robotic systems.
+                </p>
+                <p>
+                    From WiFi-enabled vehicles to ADAS prototypes, I focus on practical implementations of theoretical concepts, creating systems that are both innovative and functional.
+                </p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <span class="stat-value">04</span>
+                    <div class="stat-label">Major Projects</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">ROS</span>
+                    <div class="stat-label">Expertise</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">C++</span>
+                    <div class="stat-label">Primary Lang</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">NIT</span>
+                    <div class="stat-label">Hamirpur</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="skills" class="skills container">
-            <h2 class="section-title">Skills &nbsp; <span class="highlight">My Tech Stack</span></h2>
-            <div class="skills-grid">
-                
-                <div class="skill-card">
-                    <i class="fab fa-python"></i>
-                    <h3>Python</h3>
-                    <p>Backend systems, scripting, automation, and machine learning basics.</p>
+    <section id="projects">
+        <div class="section-header">
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <div class="projects-grid">
+            
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-icon">🚗</div>
+                    <span class="project-type">Embedded Systems</span>
                 </div>
-                
-                <div class="skill-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Web Dev</h3>
-                    <p>HTML5, CSS3, JavaScript - building responsive and modern interfaces.</p>
+                <h3>WiFi Joystick Vehicle</h3>
+                <p>
+                    Remote-controlled vehicle system using ESP8266 microcontroller with IP-based mobile interface. 
+                    Implements TCP/IP communication protocol for real-time joystick control via custom mobile UI with sub-50ms latency.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">ESP8266</span>
+                    <span class="tech-tag">WiFi</span>
+                    <span class="tech-tag">TCP/IP</span>
+                    <span class="tech-tag">Mobile UI</span>
+                    <span class="tech-tag">Embedded C</span>
                 </div>
-                
-                <div class="skill-card">
-                    <i class="fas fa-file-code"></i> 
-                    <h3>C & C++</h3>
-                    <p>Strong foundation in DSA, competitive programming, and core logic.</p>
-                </div>
-                
-                <div class="skill-card">
-                    <i class="fas fa-database"></i> 
-                    <h3>Databases</h3>
-                    <p>Experience with SQL (MySQL, PostgreSQL) and NoSQL (MongoDB).</p>
-                </div>
-
             </div>
-        </section>
 
-        <section id="projects" class="container">
-            <h2 class="section-title">Projects</h2>
-            <p style="color: #ccc;"></p>
-        </section>
-        
-    </main>
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-icon">🛡️</div>
+                    <span class="project-type">Computer Vision</span>
+                </div>
+                <h3>ADAS Prototype</h3>
+                <p>
+                    Advanced Driver Assistance System featuring real-time object detection, collision warning algorithms, 
+                    and lane departure alerts using OpenCV and ultrasonic sensor fusion on Raspberry Pi architecture.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">OpenCV</span>
+                    <span class="tech-tag">Raspberry Pi</span>
+                    <span class="tech-tag">Sensors</span>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-icon">❌⭕</div>
+                    <span class="project-type">Software</span>
+                </div>
+                <h3>Tic-Tac-Toe AI</h3>
+                <p>
+                    Desktop game application with unbeatable AI using Minimax algorithm. Features clean Tkinter GUI, 
+                    score tracking, and adjustable difficulty levels demonstrating game theory implementation.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Tkinter</span>
+                    <span class="tech-tag">Minimax</span>
+                    <span class="tech-tag">GUI</span>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <div class="project-icon">🔢</div>
+                    <span class="project-type">Database</span>
+                </div>
+                <h3>Number Guess Game</h3>
+                <p>
+                    Feature-rich guessing game with SQLite database integration for persistent high-score tracking, 
+                    player statistics, and multiple difficulty levels with hint generation systems.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">DB-API</span>
+                    <span class="tech-tag">Tkinter</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" style="background: var(--secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="section-header">
+            <span class="section-tag">Capabilities</span>
+            <h2 class="section-title">Technical Skills</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category fade-in">
+                <h3>› Programming</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">C++ (Advanced Systems)</li>
+                    <li class="skill-item">Python (Primary Language)</li>
+                    <li class="skill-item">SQL & Database Design</li>
+                    <li class="skill-item">Embedded C</li>
+                </ul>
+            </div>
+
+            <div class="skill-category fade-in">
+                <h3>› Robotics & Systems</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">ROS (Robot Operating System)</li>
+                    <li class="skill-item">Linux Administration</li>
+                    <li class="skill-item">Microcontrollers (ESP8266)</li>
+                    <li class="skill-item">Sensor Integration</li>
+                </ul>
+            </div>
+
+            <div class="skill-category fade-in">
+                <h3>› Development</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">HTML5 & CSS3</li>
+                    <li class="skill-item">JavaScript (ES6+)</li>
+                    <li class="skill-item">Python-Tkinter GUI</li>
+                    <li class="skill-item">Database Connectivity</li>
+                </ul>
+            </div>
+
+            <div class="skill-category fade-in">
+                <h3>› Specializations</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Computer Vision (OpenCV)</li>
+                    <li class="skill-item">Quantum Physics Concepts</li>
+                    <li class="skill-item">Networking (TCP/IP)</li>
+                    <li class="skill-item">Algorithm Design</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <span class="section-tag">Connect</span>
+            <h2 class="section-title">Contact shubhfront</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Let's build something together</h3>
+                <p>Available for internships, collaborations, and robotics projects. Reach out through any of the channels below.</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:shubham3786.2007@gmail.com" class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">shubham3786.2007@gmail.com</div>
+                        </div>
+                    </a>
+
+                    <a href="tel:+918829882599" class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <div class="contact-label">Mobile</div>
+                            <div class="contact-value">+91 88298 82599</div>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/shubhfront" target="_blank" class="contact-item">
+                        <div class="contact-icon">⚡</div>
+                        <div class="contact-details">
+                            <div class="contact-label">GitHub</div>
+                            <div class="contact-value">github.com/shubhfront</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/shubham-sharma-9978a4386/" target="_blank" class="contact-item">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-details">
+                            <div class="contact-label">LinkedIn</div>
+                            <div class="contact-value">Shubham Sharma</div>
+                        </div>
+                    </a>
+
+                    <a href="https://instagram.com/shubhfront" target="_blank" class="contact-item">
+                        <div class="contact-icon">📷</div>
+                        <div class="contact-details">
+                            <div class="contact-label">Instagram</div>
+                            <div class="contact-value">@shubhfront</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-cta">
+                <div class="availability-badge">Available for opportunities</div>
+                <h4>Open to Collaborate</h4>
+                <p>Currently seeking opportunities in robotics, embedded systems, and software development roles.</p>
+                <a href="mailto:shubham3786.2007@gmail.com" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    Send Message
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> Shubhfront.me. Built with ❤️ and Code.</p>
+        <div class="footer-brand">shubhfront</div>
+        <div class="social-row">
+            <a href="https://github.com/shubhfront" class="social-link" title="GitHub">GH</a>
+            <a href="https://www.linkedin.com/in/shubham-sharma-9978a4386/" class="social-link" title="LinkedIn">LI</a>
+            <a href="https://instagram.com/shubhfront" class="social-link" title="Instagram">IG</a>
+            <a href="mailto:shubham3786.2007@gmail.com" class="social-link" title="Email">@</a>
+        </div>
+        <div class="copyright">
+            © 2024 <span>shubhfront</span> (Shubham Sharma). All rights reserved.<br>
+            Built with precision at NIT Hamirpur.
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loaded class for initial animation
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+    </script>
+
 </body>
 </html>
